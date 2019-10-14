@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome!</title>
+    <style>
+        .form{
+            display:inline-block;
+            margin: 75px;
+            vertical-align: top;
+            
+        }
+    </style>
+    <title>Login Registration</title>
+</head>
+<body>
+    <h1>Welcome to Handy Helper</h1>
+    <ul class="messages">
+    {% if messages %}
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+    {% endif %}
+    </ul>
+    <div class = "form">
+        <h1>Registration</h1>
+        <form action="/register" method="post">
+                {% csrf_token %}
+            <div>
+                <label for="firstname">FirstName:</label>
+                <input type="text" name="firstname" id="">
+            </div>
+            <div>
+                <label for="lastname">Lastname:</label>
+                <input type="text" name="lastname" id="">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="">
+            </div>
+            <div>
+                <label for="confirm">Confirm Password:</label>
+                <input type="password" name="confirmpassword" id="">
+            </div>
+            <div>
+                <input type="submit" value="Register" id="">
+            </div>
+
+        </form>
+         
+    </div>
+    <div class = "form">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+                {% csrf_token %}
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="">
+            </div>
+            <div>
+                <label for="pa
+                ssword">Password:</label>
+                <input type="password" name="password" id="">
+            </div>
+            
+            <div>
+                <input type="submit" value="LogIn" id="">
+            </div>
+    
+        </form>
+             
+        </div>
+    
+</body>
+</html>

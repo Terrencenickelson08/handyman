@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View</title>
+    <style>
+         .container{
+        width:1000px;
+        height: 800px;
+         }
+        .des{
+            border: solid black;
+            width: 25%;
+            padding: 10px;
+
+        }
+        .log{
+            float:right;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">  
+        <div class="log">
+            <a href="/logout">Logout</a> | <a href="/dashboard">Back</a>
+        </div>
+        <div class="join">
+            {{job.title}}<br>
+            <br>
+        <div class= "des">
+            {{job.description}}<br>
+            <br>
+            Location: {{job.address}}<br>
+            <br>
+            Posted By: {{job.poster.firstname}} {{job.poster.lastname}}<br>
+            <br>
+            Posted On: {{job.created_at}}
+            <br>
+        </div>
+            <a href="/addtofaves/{{job.id}}">Add to my Jobs</a>
+        </div>
+    </div>
+</body>
+</html>

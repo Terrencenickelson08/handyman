@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <style>
+            .container{
+                width:1000px;
+                height: 800px;
+                /* margin: 20px; */
+            }
+           .addjob{
+                float: right;
+            }
+            .table1{
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                display: inline-block;
+                }
+
+                td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                }
+
+                tr:nth-child(even) {
+                background-color: #dddddd;
+                }
+    </style>
+</head>
+
+<body>
+    <div class ="container">
+        <div class = "addjob">
+            <a href="/addjob">Add a Job</a>
+        </div>
+        <h2>Welcome {{loggedinuser.firstname}}!</h2> <a href="/logout">Logout</a><br>
+        <br>
+        <div class="table1">
+            <table>
+                <tr>
+                  <th>Job</th>
+                  <th>Location</th>
+                  <th>Action</th>
+                </tr>
+                {% for job in alljobs %}
+                <tr> 
+                  <td>{{job.title}}</td> 
+                  <td>{{job.address}}</td>
+                  <td><a href="/showjob/{{job.id}}">View</a> | <a href="/addtofaves/{{job.id}}">Add</a></td>
+                  {% if loggedinuser == job.poster %}
+                  <td><a href="/editfaves/{{job.id}}">Edit</a> | <a href="/delete/{{job.id}}">Delete</a></td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+        <br>
+        <br>
+
+        <div class="table2">
+            <table>
+                <tr>
+                    <th>My Jobs</th>
+                </tr>
+                {% for job in favjobs %}
+                <tr>
+                    <td>{{job.title}}</td>
+                    <td><a href="/showjob/{{job.id}}">View</a> | <a href="/removejob/{{job.id}}">Delete</a></td>
+                
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+              
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Job</title>
+    <style>
+         .container{
+        width:1000px;
+        height: 800px;
+         }
+
+        .logout{
+            float:right;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class= "logout">
+           <a href="/dashboard">Back</a>   |   <a href="/">Logout</a>
+            </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li style = "color: black;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class = "creation">
+            <h2>Add a Job</h2>
+            <form action="/createjob" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="job">Title:
+                    <input type="text" name="title" id="title"></label>
+                </div>
+                <br>
+                <div>
+                    Description:
+                    <textarea name="description" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="job">Location:
+                    <input type="text" name="address" id="address"></label>
+                </div>
+                    <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
